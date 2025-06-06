@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './index.scss';
 import { Users } from './components/Users/';
+import { use } from 'react';
 
 // https://reqres.in/api/users
 
@@ -8,6 +9,7 @@ function App() {
 
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true)
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     fetch('https://reqres.in/api/users', {
@@ -26,9 +28,17 @@ function App() {
       })
   }, [])
 
+  const onchangeSearchValue = (event) => {
+    setSearch(event.target.value);
+  }
+
   return (
     <div className="App">
-      <Users isLoading={isLoading} items={users} />
+      <Users
+        search={search}
+        onchangeSearchValue={onchangeSearchValue}
+        isLoading={isLoading}
+        items={users} />
       {/* <Success /> */}
     </div>
   );
