@@ -8,8 +8,6 @@ export const Success = ({ count }) => {
             <a href="/">
                 <button className="send-invite-btn">Back</button>
             </a>
-
-
         </div>
     );
 };
